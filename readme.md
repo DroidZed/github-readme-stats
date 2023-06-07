@@ -111,7 +111,7 @@ Change the `?username=` value to your GitHub username.
 ```
 
 > **Warning**
-> By default stats card shows contributions only from public repositories. To show your private contributions you should [deploy you own instance](#deploy-on-your-own) using your own GitHub API token which allowed to see your private data.
+> By default, the stats card only shows statistics like stars, commits and pull requests from public repositories. To show private statistics on the stats card, you should [deploy your own instance](#deploy-on-your-own) using your own GitHub API token.
 
 > **Note**
 > Available ranks are S+ (top 1%), S (top 25%), A++ (top 45%), A+ (top 60%), and B+ (everyone). The values are calculated by using the [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) using commits, contributions, issues, stars, pull requests, followers, and owned repositories. The implementation can be investigated at [src/calculateRank.js](./src/calculateRank.js).
@@ -154,8 +154,8 @@ You can look at a preview for [all available themes](./themes/README.md) or chec
 
 #### Responsive Card Theme
 
-[![Anurag's GitHub stats-Dark](https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&theme=dark#gh-dark-mode-only)](https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only)
-[![Anurag's GitHub stats-Light](https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&theme=default#gh-light-mode-only)](https://github.com/anuraghazra/github-readme-stats#gh-light-mode-only)
+[![Anurag's GitHub stats-Dark](https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&theme=dark#gh-dark-mode-only)](https://github.com/anuraghazra/github-readme-stats#responsive-card-theme#gh-dark-mode-only)
+[![Anurag's GitHub stats-Light](https://github-readme-stats.vercel.app/api?username=anuraghazra&show_icons=true&theme=default#gh-light-mode-only)](https://github.com/anuraghazra/github-readme-stats#responsive-card-theme#gh-light-mode-only)
 
 Since GitHub will re-upload the cards and serve them from their [CDN](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-anonymized-urls), we can not infer the browser/GitHub theme on the server side. There are, however, four methods you can use to create dynamics themes on the client side.
 
@@ -276,7 +276,6 @@ You can provide multiple comma-separated values in the bg_color option to render
 -   `rank_icon` - Shows alternative rank icon (i.e. `github` or `default`). Default: `default`.
 -   `show_icons` - _(boolean)_. Default: `false`.
 -   `include_all_commits` - Count total commits instead of just the current year commits _(boolean)_. Default: `false`.
--   `count_private` - Count private contributions _(boolean)_. Default: `false`.
 -   `line_height` - Sets the line height between text _(number)_. Default: `25`.
 -   `exclude_repo` - Exclude stars from specified repositories _(Comma-separated values)_. Default: `[] (blank array)`.
 -   `custom_title` - Sets a custom title for the card. Default:  `<username> GitHub Stats`.
@@ -342,15 +341,18 @@ Endpoint: `api/pin?username=anuraghazra&repo=github-readme-stats`
 
 ### Demo
 
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats)](https://github.com/anuraghazra/github-readme-stats)
+![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats)
 
 Use [show_owner](#customization) variable to include the repo's owner username
 
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&show_owner=true)](https://github.com/anuraghazra/github-readme-stats)
+![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=anuraghazra&repo=github-readme-stats&show_owner=true)
 
 # Top Languages Card
 
 The top languages card shows a GitHub user's most frequently used top language.
+
+> **Warning**
+> By default, the language card shows language results only from public repositories. To include languages used in private repositories, you should [deploy your own instance](#deploy-on-your-own) using your own GitHub API token.
 
 > **Note**
 > Top Languages does not indicate the user's skill level or anything like that; it's a GitHub metric to determine which languages have the most code on GitHub. It is a new feature of github-readme-stats.
@@ -380,7 +382,7 @@ By default, only the byte count is used for determining the languages percentage
 -   `&size_weight=0&count_weight=1` - Orders by repo count
 
 ```md
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&size_weight=0.5&count_weight=0.5)](https://github.com/anuraghazra/github-readme-stats)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&size_weight=0.5&count_weight=0.5)
 ```
 
 ### Exclude individual repositories
@@ -388,7 +390,7 @@ By default, only the byte count is used for determining the languages percentage
 You can use the `&exclude_repo=repo1,repo2` parameter to exclude individual repositories.
 
 ```md
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&exclude_repo=github-readme-stats,anuraghazra.github.io)](https://github.com/anuraghazra/github-readme-stats)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&exclude_repo=github-readme-stats,anuraghazra.github.io)
 ```
 
 ### Hide individual languages
@@ -396,7 +398,7 @@ You can use the `&exclude_repo=repo1,repo2` parameter to exclude individual repo
 You can use `&hide=language1,language2` parameter to hide individual languages.
 
 ```md
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&hide=javascript,html)](https://github.com/anuraghazra/github-readme-stats)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&hide=javascript,html)
 ```
 
 ### Show more languages
@@ -404,7 +406,7 @@ You can use `&hide=language1,language2` parameter to hide individual languages.
 You can use the `&langs_count=` option to increase or decrease the number of languages shown on the card. Valid values are integers between 1 and 10 (inclusive), and the default is 5.
 
 ```md
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&langs_count=8)](https://github.com/anuraghazra/github-readme-stats)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&langs_count=8)
 ```
 
 ### Compact Language Card Layout
@@ -412,7 +414,7 @@ You can use the `&langs_count=` option to increase or decrease the number of lan
 You can use the `&layout=compact` option to change the card design.
 
 ```md
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&layout=compact)
 ```
 
 ### Donut Chart Language Card Layout
@@ -444,16 +446,16 @@ You can use the `&layout=pie` option to change the card design.
 You can use the `&hide_progress=true` option to hide the percentages and the progress bars (layout will be automatically set to `compact`).
 
 ```md
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&hide_progress=true)](https://github.com/anuraghazra/github-readme-stats)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&hide_progress=true)
 ```
 
 ### Demo
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra)
 
 -   Compact layout
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&layout=compact)
 
 -   Donut Chart layout
 
@@ -469,7 +471,7 @@ You can use the `&hide_progress=true` option to hide the percentages and the pro
 
 -   Hidden progress bars
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&hide_progress=true)](https://github.com/anuraghazra/github-readme-stats)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra&hide_progress=true)
 
 # Wakatime Week Stats
 
@@ -484,13 +486,13 @@ Change the `?username=` value to your [Wakatime](https://wakatime.com) username.
 
 ### Demo
 
-[![Harlok's wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=Harlok)](https://github.com/anuraghazra/github-readme-stats)
+![Harlok's wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=Harlok)
 
-[![Harlok's wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=Harlok&hide_progress=true)](https://github.com/anuraghazra/github-readme-stats)
+![Harlok's wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=Harlok&hide_progress=true)
 
 -   Compact layout
 
-[![Harlok's wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=Harlok&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
+![Harlok's wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=Harlok&layout=compact)
 
 * * *
 
@@ -544,11 +546,11 @@ Choose from any of the [default themes](#themes)
 
 -   Top languages
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra)
 
 -   WakaTime card
 
-[![Harlok's wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=Harlok)](https://github.com/anuraghazra/github-readme-stats)
+![Harlok's wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=Harlok)
 
 * * *
 

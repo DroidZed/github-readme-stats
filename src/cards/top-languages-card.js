@@ -661,9 +661,13 @@ const renderDonutLayout = (langs, width, totalLanguageSize) => {
 };
 
 /**
- * Creates the no coding activity SVG node.
+ * Creates the no languages data SVG node.
  *
- * @param {{color: string, text: string, layout: import("./types").TopLangOptions["layout"]}} The function prop
+ * @param {object} props Object with function properties.
+ * @param {string} props.color No languages data text color.
+ * @param {string} props.text No languages data translated text.
+ * @param {import("./types").TopLangOptions["layout"] | undefined} props.layout Card layout.
+ * @return {string} No languages data SVG node string.
  */
 const noLanguagesDataNode = ({ color, text, layout }) => {
   return `
@@ -676,11 +680,13 @@ const noLanguagesDataNode = ({ color, text, layout }) => {
 /**
  * Get default languages count for provided card layout.
  *
- * @param {import("./types").TopLangOptions["layout"] | undefined} layout Input layout string
- * @return {number} Default languages count for input layout
+ * @param {object} props Function properties.
+ * @param {import("./types").TopLangOptions["layout"]=} props.layout Input layout string.
+ * @param {boolean=} props.hide_progress Input hide_progress parameter value.
+ * @return {number} Default languages count for input layout.
  */
-const getDefaultLanguagesCountByLayout = (layout) => {
-  if (layout === "compact") {
+const getDefaultLanguagesCountByLayout = ({ layout, hide_progress }) => {
+  if (layout === "compact" || hide_progress === true) {
     return COMPACT_LAYOUT_DEFAULT_LANGS_COUNT;
   } else if (layout === "donut") {
     return DONUT_LAYOUT_DEFAULT_LANGS_COUNT;
@@ -714,7 +720,7 @@ const renderTopLanguages = (topLangs, options = {}) => {
     layout,
     custom_title,
     locale,
-    langs_count = getDefaultLanguagesCountByLayout(layout),
+    langs_count = getDefaultLanguagesCountByLayout({ layout, hide_progress }),
     border_radius,
     border_color,
     disable_animations,
