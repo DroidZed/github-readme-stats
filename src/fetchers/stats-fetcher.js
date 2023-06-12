@@ -46,7 +46,6 @@ const GRAPHQL_STATS_QUERY = `
       login
       contributionsCollection {
         totalCommitContributions
-        restrictedContributionsCount
       }
       repositoriesContributedTo(first: 1, contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]) {
         totalCount
@@ -190,7 +189,7 @@ const fetchStats = async (
     totalIssues: 0,
     totalStars: 0,
     contributedTo: 0,
-    rank: { level: "B", score: 0 },
+    rank: { level: "C", percentile: 100 },
   };
 
   let res = await statsFetcher(username);
