@@ -1,0 +1,9 @@
+[functions."api/*.js"]
+  memory = 128
+  maxDuration = 10
+
+---
+
+[[redirects]]
+  from = "/"
+  to = "https://github.com/DroidZed/github-readme-stats"
