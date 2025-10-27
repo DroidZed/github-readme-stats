@@ -4,6 +4,8 @@
   <p>Get dynamically generated GitHub stats on your READMEs!</p>
 </div>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3a675736-47ac-4d73-8e27-3d0c6adf5a39/deploy-status)](https://app.netlify.com/projects/github-readme-stats7/deploys)
+
 <p align="center">
   <a href="https://github.com/anuraghazra/github-readme-stats/actions">
     <img alt="Tests Passing" src="https://github.com/anuraghazra/github-readme-stats/workflows/Test/badge.svg" />
